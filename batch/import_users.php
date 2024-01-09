@@ -1,6 +1,6 @@
 <?php
 
-require_once("libray/log.php");
+require_once("library/log.php");
 
 $logFile = __DIR__."/log/import_users.log";
 writeLog($logFile,"社員情報登録バッチ 開始");
