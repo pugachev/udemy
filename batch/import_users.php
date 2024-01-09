@@ -1,4 +1,11 @@
 <?php
+
+require_once("libray/log.php");
+
+$logFile = __DIR__."/log/import_users.log";
+writeLog($logFile,"社員情報登録バッチ 開始");
+$dataCount=0;
+
 //データベース接続
 $username = "udemy_user";
 $password = "udemy_pass";
@@ -62,12 +69,15 @@ while($data=fgetcsv($fp)){
         var_dump($iparam);
         $istmt = $pdo->prepare($isql);
         $istmt->execute($iparam);
+        $dataCount++;
     }
 
 }
 $pdo->commit();
 //社員情報CSVクローズ
 fclose($fp);
+
+writeLog($logFile,"社員情報登録バッチ 終了[処理件数: {$dataCount}件]");
 
 
 
