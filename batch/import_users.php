@@ -78,7 +78,7 @@ try{
     //社員情報CSVクローズ
     fclose($fp);
 }catch(Exception $e){
-    $pdo->rollBack();
+    $pdo->rollback();
     $dataCount=0;
     writeLog($logFile,"エラーが発生しました".$e->getMessage());
 
