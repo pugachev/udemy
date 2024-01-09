@@ -35,8 +35,10 @@ while($data=fgetcsv($fp)){
             ":start_date" => $data[7],
             ":tel" => $data[8],
             ":mail_address" => $data[9],
-            ":updated" => date('Y-m-d')
+            ":updated" => date('Y-m-d H:i:s')
         );
+        var_dump('既存修正');
+        var_dump($uparam);
         $ustmt = $pdo->prepare($usql);
         $ustmt->execute($uparam);
     }else{
@@ -53,10 +55,11 @@ while($data=fgetcsv($fp)){
             ":start_date" => $data[7],
             ":tel" => $data[8],
             ":mail_address" => $data[9],
-            ":created" => date('Y-m-d'),
-            ":updated" => date('Y-m-d')
+            ":created" => date('Y-m-d H:i:s'),
+            ":updated" => date('Y-m-d H:i:s')
         );
-        // var_dump($iparam);
+        var_dump('新規登録');
+        var_dump($iparam);
         $istmt = $pdo->prepare($isql);
         $istmt->execute($iparam);
     }
